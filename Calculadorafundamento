@@ -1,0 +1,123 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void sumaa(int *a,int *b){
+	*a=*a+*b;
+}
+void restaa(int *a,int *b){
+	*a=*a-*b;
+}
+void multipli(int *a,int *b){
+	*a=*a*(*b);
+}
+void divicion(int *a,int *b){
+	*a=*a/(*b);
+}
+void potenc(int *a,int *b){
+  *a=pow(*a,*b);
+  
+}
+void prom(float *a,float *b){
+	*a=*a/(*b);
+}
+int main(int argc, char const *argv[])
+{
+	int  opcion,x,ca,summ;
+  int *var_punteroa=malloc(sizeof(int));
+	int *var_punterob=malloc(sizeof(int)*10);
+  float *i=malloc(sizeof(float)*14);
+  float *j=malloc(sizeof(float)*16);
+  float *k=malloc(sizeof(float)*18);
+
+  do
+  {
+    printf("\n[1] Calcular suma");
+    printf("\n[2] Calcular resta");
+    printf("\n[3] Calcular multiplicacion");
+    printf("\n[4] Calcular Division");
+    printf("\n[5] Calcular Potencia");
+    printf("\n[6] Calcular Promedio");
+    printf("\n[7] Salir");
+
+    do
+    {
+       printf("\nIngrese una opcion: ");
+       scanf("%d", &opcion);
+    }while(opcion<1 || opcion>7);
+
+    switch(opcion)
+    {
+      case 1: printf("Ingrese la cantidad de numeros que quiere sumar: "); 
+              scanf("%d", &ca);
+              for (x=0;x<ca;x++)
+              {
+                printf("Ingrese un numero a sumar: "); 
+                scanf("%d", &*var_punterob);
+              }
+              sumaa(var_punteroa,var_punterob);
+              printf("%i\n", *var_punteroa);
+              free(var_punteroa);
+              free(var_punterob);
+              break;
+
+      case 2: printf("Ingrese un numero A: "); 
+              scanf("%d", &*var_punteroa);
+              printf("Ingrese un numero B: "); 
+              scanf("%d", &*var_punterob);
+              restaa(var_punteroa,var_punterob);
+              printf("%i\n", *var_punteroa);
+              free(var_punteroa);
+              free(var_punterob);
+              break;
+
+      case 3: printf("Ingrese la cantidad de numeros que quiere multiplicar: ");
+              scanf("%d", &ca);  
+              *var_punteroa=*var_punteroa+1;
+              for (x=0;x<ca;x++)
+              {
+                printf("Ingrese un numero a multiplicar: "); 
+                scanf("%d", &*var_punterob);
+                multipli(var_punteroa,var_punterob);
+              }
+              printf("%i\n", *var_punteroa);
+              free(var_punteroa);
+              free(var_punterob);
+              break;
+      case 4: printf("Ingrese un numero A: "); 
+              scanf("%d", &*var_punteroa);
+              printf("Ingrese un numero B: "); 
+              scanf("%d", &*var_punterob);
+              divicion(var_punteroa,var_punterob);
+              printf("%d\n", *var_punteroa);
+              free(var_punteroa);
+              free(var_punterob);
+              break;
+      case 5: printf("Ingrese un numero A: "); 
+              scanf("%d", &*var_punteroa);
+              printf("Ingrese un numero B: "); 
+              scanf("%d", &*var_punterob);
+              potenc(var_punteroa,var_punterob);
+              printf("%i\n", *var_punteroa);
+              free(var_punteroa);
+              free(var_punterob);
+              break;
+      case 6: printf("Ingrese la cantidad de numeros que quiere promediar: "); 
+              scanf("%f", &*i);
+              for(x=0;x<*i;x++)
+              {
+                printf("Ingrese un numero: "); 
+                scanf("%f", &*j);
+                *k=*k+*j;
+              }
+              prom(k, i);
+              printf("%f\n", *k);
+              free(k);
+              free(i);
+              break;                   
+    }
+  }while(opcion!=7);
+  free(var_punteroa);
+  free(var_punterob);
+	return 0;
+}
